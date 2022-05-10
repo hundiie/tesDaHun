@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Frame work">
+      <UniqueIdentifier>{f4c97ef9-3b28-4511-80a2-6e946c0af0fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{c9a2c7c9-6b3c-4c0d-9b5b-1a09e1439588}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Framework\App.h">
+      <Filter>Frame work</Filter>
+    </ClInclude>
+    <ClInclude Include="Type.h" />
+    <ClInclude Include="Common.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.c" />
+    <ClCompile Include="Framework\App.c">
+      <Filter>Frame work</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
