@@ -1,4 +1,7 @@
 #include "App.h"
+#include "common.h"
+#include "renderer.h"
+
 
 bool App_Init()
 {
@@ -10,15 +13,20 @@ void processInput()
 }
 void update()
 {
-	
+	Renderer_DrawText("Hello Game", sizeof("Hello Game"));
 }
 void render()
 {
-	//system("cls");
-	puts("hello Game");
+	Renderer_Flip();
 }
+void cleanup()
+{
+	Renderer_Cleanup();
+}
+
 int32 App_Run()
 {
+	atexit(cleanup);
 	// Game Loop : 게임을 동작시키는 루프. 프레임(Frame)이라고 한다.
 	while (true)
 	{

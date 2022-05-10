@@ -18,10 +18,16 @@
     </ClInclude>
     <ClInclude Include="Type.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Framework\renderer.h">
+      <Filter>Frame work</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.c" />
     <ClCompile Include="Framework\App.c">
+      <Filter>Frame work</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\renderer.c">
       <Filter>Frame work</Filter>
     </ClCompile>
   </ItemGroup>
