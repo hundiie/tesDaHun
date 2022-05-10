@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Type.h"
+
 //랜더러 초기화
 bool   Renderer_Init(void);
 //런더러 정리

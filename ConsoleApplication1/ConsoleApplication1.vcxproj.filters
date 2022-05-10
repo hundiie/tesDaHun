@@ -18,7 +18,10 @@
     </ClInclude>
     <ClInclude Include="Type.h" />
     <ClInclude Include="Common.h" />
-    <ClInclude Include="Framework\renderer.h">
+    <ClInclude Include="Framework\Renderer.h">
+      <Filter>Frame work</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Timer.h">
       <Filter>Frame work</Filter>
     </ClInclude>
   </ItemGroup>
@@ -27,7 +30,10 @@
     <ClCompile Include="Framework\App.c">
       <Filter>Frame work</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\renderer.c">
+    <ClCompile Include="Framework\Renderer.c">
+      <Filter>Frame work</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Timer.c">
       <Filter>Frame work</Filter>
     </ClCompile>
   </ItemGroup>
