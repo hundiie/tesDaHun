@@ -3,7 +3,7 @@
 /// <summary>
 /// 타이머를 초기화한다.
 /// </summary>
-void   Timer_Init(void);
+void   Timer_Init(int32 fps);
 
 /// <summary>
 /// 타이머를 업데이트한다.
