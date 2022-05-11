@@ -1,7 +1,9 @@
+#include "type.h"
 #include "App.h"
 #include "common.h"
 #include "Renderer.h"
 #include "Timer.h"
+#include "Input.h"
 
 
 bool App_Init()
@@ -10,6 +12,7 @@ bool App_Init()
 	{
 		return false;
 	}
+
 	return true;
 }
 void processInput()
@@ -19,29 +22,27 @@ void processInput()
 
 float elapsedTime;
 bool canShow = false;
+char str[2][128] = { "" };
 
 void update()
 {
-	char str[128] = "";
-	sprintf_s(str,sizeof(str), "현재 FPS : %d", (int32)(1 / Timer_GetDeltaTime()));
-	Renderer_DrawText(str, strlen(str));
+	int32 minVal = -45;
+	int32 maxVal = 32;
+	int32 randInt = Random_NumberInt(minVal, maxVal);
+	assert(minVal <= randInt && randInt < maxVal);
 
-	//0.5초 마다 깜박이는 텍스트
+	sprintf_s(str[0], sizeof(str[0]), "%d ~ %d 사이의 정수 : %d\n", minVal, maxVal, randInt);
 
-	elapsedTime += DELTA_TIME;
-
-	if (elapsedTime >= 0.5f)
-	{
-		elapsedTime = 0.0f;
-		canShow = !canShow;
-	}
-	if (canShow)
-	{
-		Renderer_DrawText("text", sizeof("text"));
-	}
+	//float fminVal = -12.342f;
+	//float fmaxVal = 25.982;
+	//float frand = Random_NumberFloat(fminVal, fmaxVal);
+	//assert(fminVal <= frand && frand <= maxVal);
+	//
+	//sprintf_s(str[1], sizeof(str[1]), "%f ~ %f 사이의 실수 : %f", fminVal, fmaxVal, frand);
 }
 void render()
 {
+	
 	Renderer_Flip();
 }
 void cleanup()
@@ -52,7 +53,7 @@ void cleanup()
 int32 App_Run()
 {
 	atexit(cleanup);
-
+	Random_Init();
 	Timer_Init(60);
 	
 	const int32 FIXED_FPS = 60;
@@ -64,6 +65,7 @@ int32 App_Run()
 		if (Timer_Update())
 		{
 			//deltaTime : 프레임 간의 시간
+			Input_Update();
 			processInput();      // 입력 처리
 			update();         // 게임 업데이트
 			render();         // 게임 출력
@@ -71,4 +73,4 @@ int32 App_Run()
 	}
 
 	return 0;
-}
+} 

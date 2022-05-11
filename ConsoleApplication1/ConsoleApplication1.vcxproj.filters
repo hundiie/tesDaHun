@@ -24,6 +24,12 @@
     <ClInclude Include="Framework\Timer.h">
       <Filter>Frame work</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Input.h">
+      <Filter>Frame work</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Random.h">
+      <Filter>Frame work</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.c" />
@@ -34,6 +40,12 @@
       <Filter>Frame work</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Timer.c">
+      <Filter>Frame work</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Input.c">
+      <Filter>Frame work</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Random.c">
       <Filter>Frame work</Filter>
     </ClCompile>
   </ItemGroup>
