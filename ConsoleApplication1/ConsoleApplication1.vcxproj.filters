@@ -30,6 +30,12 @@
     <ClInclude Include="Framework\Random.h">
       <Filter>Frame work</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Text.h">
+      <Filter>Frame work</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\scene.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.c" />
@@ -47,6 +53,12 @@
     </ClCompile>
     <ClCompile Include="Framework\Random.c">
       <Filter>Frame work</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Text.c">
+      <Filter>Frame work</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\scene.c">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

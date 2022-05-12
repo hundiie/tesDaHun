@@ -1,5 +1,6 @@
 #include "Common.h"
 #include "Renderer.h"
+#include "Text.h"
 
 HANDLE s_consoleHandle;
 HANDLE s_screens[2];
@@ -25,13 +26,12 @@ bool Renderer_Init(void)
 
 void Renderer_Cleanup(void)
 {
-    //받은 핸들을 돌려준다.
     CloseHandle(s_consoleHandle);
     CloseHandle(s_screens[0]);
     CloseHandle(s_screens[1]);
 }
 
-void clear(HANDLE consoleHandle)//클리어 함수
+void clear(HANDLE consoleHandle)
 {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     GetConsoleScreenBufferInfo(consoleHandle, &csbi);
@@ -69,11 +69,20 @@ void Renderer_Flip(void)
     clear(s_screens[s_backIndex]);
 }
 
-void Renderer_DrawText(const char* text, int32 numberOfChar)
+void Renderer_DrawText(const Text* text, int32 numberOfChar, int32 x, int32 y)
 {
     // 1. 백 버퍼에 대한 핸들을 가져온다.
     HANDLE backBuffer = s_screens[s_backIndex];
 
-    // 2. 백 버퍼에 텍스트를 출력한다.
-    WriteConsoleA(backBuffer, text, numberOfChar, NULL, NULL);
+    // 2. 커서 위치를 옮겨준다.
+    COORD pos = { x, y };
+    SetConsoleCursorPosition(backBuffer, pos);
+
+    // 3. 백 버퍼에 텍스트를 출력한다.
+    for (int32 i = 0; i < numberOfChar; ++i)
+    {
+        SetConsoleTextAttribute(backBuffer, text[i].Attributes);
+        WriteConsole(backBuffer, &text[i].Char, 1, NULL, NULL);
+    }
+    SetConsoleTextAttribute(backBuffer, TEXT_COLOR_WHITE);
 }

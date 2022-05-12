@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Type.h"
 
 //랜더러 초기화
@@ -10,4 +9,4 @@ void   Renderer_Cleanup(void);
 //화면 바꾸기
 void   Renderer_Flip(void);
 //텍스트를 출력한다.
-void   Renderer_DrawText(const char* text, int32 numberOfChar);
+void   Renderer_DrawText(const Text* text, int32 numberOfChar, int32 x, int32 y);

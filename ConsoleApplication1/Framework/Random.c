@@ -1,59 +1,31 @@
-#include "Random.h"
-#include "Type.h"
 #include "Common.h"
-
-#define SRAND srand(time(NULL));
-
-int32 r_Int = 0;
-float r_Float = 0;
+#include "Random.h"
 
 void Random_Init(void)
 {
-	SRAND;
-
-	r_Int = 0;
-	r_Float = 0;
-	
-	return true;
+	srand(time(NULL));
 }
-//- 2,147,483,648 ~2,147,483,647
-// 32, 767
-int32 Random_NumberInt(int32 MinNumber, int32 MaxNumber)
+
+int32 Random_NumberInt(int32 minInclusive, int32 maxExclusive)
 {
-	int k = (rand()%21475) * 10000;
+	int32 range = maxExclusive - minInclusive;
+	int32 count = 1 + range / RAND_MAX;
 
-	int a = k ;
-	
-	k = (rand()%8365) * 10;
-	
-	a += k;
-
-	k = rand() % 10;//1자리
-
-	if (a >= 2147483640)//변수 정리
+	int32 result = 0;
+	for (int32 i = 0; i < count; ++i)
 	{
-		k = rand() % 8;
+		result += rand() % range;
 	}
+	result += minInclusive;
 
-	a += k;
-	
-	r_Int = a % (MaxNumber - MinNumber + 1) + MinNumber;
-	
-	int h = rand() % 2;
-	
-	if (h == 0)
-	{
-		r_Int *= -1;
-	}
-	
-	return r_Int;
+	return result;
 }
-//3.4e+38
-float Random_NumberFloat(float MinNumber, float MaxNumber)
+
+float Random_NumberFloat(float minInclusive, float maxInclusive)
 {
-	r_Float = (rand() % 10000);
-	float k = 0;
-	float l = 1000000;
-	k = r_Float / l;
-	return k;
+	float normalizedRandom = rand() / (float)RAND_MAX;
+	float range = maxInclusive - minInclusive;
+	float result = minInclusive + normalizedRandom * range;
+
+	return result;
 }
